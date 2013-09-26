@@ -1,0 +1,19 @@
+CREATE TABLE User (
+     userId     TEXT PRIMARY KEY,
+     password     TEXT,
+     regdate     NUMERIC
+);
+
+CREATE TABLE DebtHistory (
+     creditor	TEXT PRIMARY KEY,
+     debtor 	TEXT,
+	 amount	    NUMERIC,
+	 reason		TEXT,
+     regdate    NUMERIC
+);
+
+CREATE TABLE DebtDependency (
+     creditor	TEXT PRIMARY KEY,
+     debtor 	TEXT,
+	 amount	    NUMERIC
+);

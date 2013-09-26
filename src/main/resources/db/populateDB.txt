@@ -1,0 +1,11 @@
+INSERT INTO User VALUES ('hunky', 'hunky', null);
+INSERT INTO User VALUES ('jayjay', 'jayjay', null);
+INSERT INTO User VALUES ('ari', 'ari', null);
+INSERT INTO User VALUES ('kal', 'kal', null);
+INSERT INTO User VALUES ('quick', 'quick', null);
+INSERT INTO User VALUES ('sipo', 'sipo', null);
+INSERT INTO User VALUES ('pang', 'pang', null);
+INSERT INTO User VALUES ('mathew', 'mathew', null);
+INSERT INTO User VALUES ('ellan', 'ellan', null);
+INSERT INTO User VALUES ('pooh', 'pooh', null);
+INSERT INTO User VALUES ('luka', 'luka', null);
