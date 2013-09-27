@@ -4,6 +4,7 @@ import me.blog.youreme.payback.model.DebtDependency;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,5 +32,13 @@ public class DebtDependencyDAO extends BaseDAO {
 
     public int updateDebtDependency(DebtDependency debtDependency) {
         return getSqlSessionTemplate().update(NAMESPACE + ".updateDebtDependency", debtDependency);
+    }
+
+    public List<DebtDependency> selectDebtList(String debtor) {
+        return getSqlSessionTemplate().selectList(NAMESPACE + ".selectDebtList", debtor);
+    }
+
+    public List<DebtDependency> selectReceivableList(String creditor) {
+        return getSqlSessionTemplate().selectList(NAMESPACE + ".selectReceivableList", creditor);
     }
 }

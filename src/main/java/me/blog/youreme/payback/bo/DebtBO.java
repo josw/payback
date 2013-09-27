@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,10 +25,6 @@ public class DebtBO {
 
     @Autowired
     DebtDependencyDAO debtDependencyDAO;
-
-    public String getUserId() {
-        return "hunky";
-    }
 
     /**
      * 1. 빌려준 돈 히스토리 저장.
@@ -86,5 +83,12 @@ public class DebtBO {
         } else {
             debtDependencyDAO.insertDebtDependency(debtDependency);
         }
+    }
+
+    public List<DebtDependency> selectDebtList(String debtor) {
+        return debtDependencyDAO.selectDebtList(debtor);
+    }
+    public List<DebtDependency> selectReceivableList(String creditor) {
+        return debtDependencyDAO.selectReceivableList(creditor);
     }
 }

@@ -9,7 +9,7 @@ import java.util.Date;
  * Time: 오전 1:39
  * To change this template use File | Settings | File Templates.
  */
-public class User {
+public class User extends BaseObject {
     private String userId;
     private String password;
     private Date regdate;

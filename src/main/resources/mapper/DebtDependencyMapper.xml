@@ -23,7 +23,29 @@
 	        creditor == #{creditor}
 	        AND debtor = #{debtor}
 	</select>
-	
+
+    <select id="selectDebtList" parameterType="String" resultType="DebtDependency" >
+	    SELECT
+	        creditor,
+	        debtor,
+	        amount
+	    FROM
+	        DebtDependency
+	    WHERE
+	        debtor = #{debtor}
+	</select>
+
+    <select id="selectReceivableList" parameterType="String" resultType="DebtDependency" >
+	    SELECT
+	        creditor,
+	        debtor,
+	        amount
+	    FROM
+	        DebtDependency
+	    WHERE
+	        creditor == #{creditor}
+	</select>
+
 	<insert id="insertDebtDependency" parameterType="DebtDependency">
 		INSERT INTO DebtDependency (creditor, debtor, amount)
 		VALUES (#{creditor}, #{debtor}, ${amount})

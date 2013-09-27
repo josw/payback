@@ -7,7 +7,7 @@ package me.blog.youreme.payback.model;
  * Time: 오전 1:58
  * To change this template use File | Settings | File Templates.
  */
-public class DebtDependency {
+public class DebtDependency extends BaseObject {
     private String creditor;
     private String debtor;
     private int amount;

@@ -9,7 +9,7 @@ import java.util.Date;
  * Time: 오전 1:56
  * To change this template use File | Settings | File Templates.
  */
-public class DebtHistory {
+public class DebtHistory extends BaseObject {
     private String creditor;
     private String debtor;
     private int amount;
