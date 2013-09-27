@@ -1,5 +1,7 @@
 package me.blog.youreme.payback.model;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: youreme
@@ -12,7 +14,7 @@ public class DebtHistory {
     private String debtor;
     private int amount;
     private String reason;
-    private String regdate;
+    private Date regdate;
 
     public String getCreditor() {
         return creditor;
@@ -46,11 +48,11 @@ public class DebtHistory {
         this.reason = reason;
     }
 
-    public String getRegdate() {
+    public Date getRegdate() {
         return regdate;
     }
 
-    public void setRegdate(String regdate) {
+    public void setDate(Date regdate) {
         this.regdate = regdate;
     }
 }

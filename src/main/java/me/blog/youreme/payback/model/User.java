@@ -1,5 +1,7 @@
 package me.blog.youreme.payback.model;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: youreme
@@ -10,7 +12,7 @@ package me.blog.youreme.payback.model;
 public class User {
     private String userId;
     private String password;
-    private String regdate;
+    private Date regdate;
 
     public String getUserId() {
         return userId;
@@ -28,11 +30,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRegdate() {
+    public Date getRegdate() {
         return regdate;
     }
 
-    public void setRegdate(String regdate) {
+    public void setRegdate(Date regdate) {
         this.regdate = regdate;
     }
 

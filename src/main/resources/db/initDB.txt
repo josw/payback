@@ -1,15 +1,15 @@
 CREATE TABLE User (
      userId     TEXT PRIMARY KEY,
      password     TEXT,
-     regdate     NUMERIC
+     regdate     DATE
 );
 
 CREATE TABLE DebtHistory (
-     creditor	TEXT PRIMARY KEY,
+     creditor	TEXT,
      debtor 	TEXT,
 	 amount	    NUMERIC,
 	 reason		TEXT,
-     regdate    NUMERIC
+     regdate    DATE
 );
 
 CREATE TABLE DebtDependency (

@@ -15,6 +15,6 @@
 	
 	<insert id="insertUser" parameterType="User">
 		INSERT INTO User (userId, password, regdate)
-		VALUES (#{userId}, #{password},null)
+		VALUES (#{userId}, #{password},DATETIME('NOW'))
     </insert>
 </mapper>
