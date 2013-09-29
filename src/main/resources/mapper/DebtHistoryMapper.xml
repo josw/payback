@@ -8,6 +8,7 @@
 	        debtor,
 	        amount,
 	        reason,
+	        completed,
 	        regdate
 	    FROM
 	        DebtHistory
@@ -17,7 +18,7 @@
 	</select>
 	
 	<insert id="insertDebtHistory" parameterType="DebtHistory">
-		INSERT INTO DebtHistory (creditor, debtor, amount, reason, regdate)
-		VALUES (#{creditor}, #{debtor}, ${amount}, #{reason}, DATETIME('NOW'))
+		INSERT INTO DebtHistory (creditor, debtor, amount, reason, completed regdate)
+		VALUES (#{creditor}, #{debtor}, ${amount}, #{reason}, false, DATETIME('NOW'))
     </insert>
 </mapper>

@@ -12,6 +12,7 @@
 	    WHERE
 	        creditor == #{creditor}
 	        AND debtor = #{debtor}
+	        AND completed = false
 	</select>
 
     <select id="selectDebtDependencyCount" parameterType="DebtDependency" resultType="int" >

@@ -14,6 +14,16 @@ public class DebtHistory extends BaseObject {
     private String debtor;
     private int amount;
     private String reason;
+    private boolean completed;
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     private Date regdate;
 
     public String getCreditor() {

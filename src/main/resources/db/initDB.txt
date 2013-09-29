@@ -9,6 +9,7 @@ CREATE TABLE DebtHistory (
      debtor 	TEXT,
 	 amount	    NUMERIC,
 	 reason		TEXT,
+	 completed  BOOLEAN DEFAULT FALSE,
      regdate    DATE
 );
 

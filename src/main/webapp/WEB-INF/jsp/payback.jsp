@@ -48,8 +48,7 @@
                 <li><a href="/${userId}/payback" class="tabnav-tab selected">Payback</a></li>
             </ul>
         </div>
-        <div id="issues_list" class="js-issues-results columns browser" data-pjax-container=""
-             data-url="/${userId}/payback">
+        <div id="issues_list" class="js-issues-results columns browser" data-pjax-container="" data-url="/${userId}/payback">
 
             <div class="column sidebar issues-list-sidebar js-issue-sidebar">
                 <ul class="filter-list js-pjax-active" data-pjax="">
@@ -75,14 +74,18 @@
                     <ul class="js-color-label-list filter-list color-label-list small js-editable-labels-show"
                         data-pjax="">
                         <h4>Friends</h4>
+                        <c:forEach var="key" items="${debtKey}" varStatus="status">
                         <li>
-                            <a href="/jayjay/payback" class="filter-item color-label  labelstyle-fc2929 zeroed"
+                            <a href="/${key}/payback" class="filter-item color-label  labelstyle-fc2929 zeroed"
                                data-label="bug" rel="nofollow">
-                                <span class="count">2000</span>
+                                <span class="count">${dependency[key]}</span>
                                 <span class="color" style="background-color: #fc2929">&nbsp;</span>
                                 <span class="octicon octicon-remove-close"></span>
-                                <span class="name">jayjay</span>
-                            </a></li>
+                                <span class="name">${key}</span>
+                            </a>
+                        </li>
+                        </c:forEach>
+                        <%--
                         <li>
                             <a href="/ari/payback" class="filter-item color-label  labelstyle-cccccc zeroed"
                                data-label="duplicate" rel="nofollow">
@@ -115,6 +118,7 @@
                                 <span class="octicon octicon-remove-close"></span>
                                 <span class="name">mathew</span>
                             </a></li>
+                        --%>
                     </ul>
 
                     <div class="rule"></div>
