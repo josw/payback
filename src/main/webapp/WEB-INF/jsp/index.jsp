@@ -1,88 +1,58 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8"  session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="ko">
-<head>
-<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
-<meta http-equiv="cache-control" content="no-cache, must-revalidate">
-<meta http-equiv="pragma" content="no-cache">
-<title>떼인돈 받아드립니다.</title>
-<style>
 
-table {font: 85% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;padding: 0; margin: 0; border-collapse: collapse; color: #333; background: #F3F5F7;}
-table a {color: #3A4856; text-decoration: none; border-bottom: 1px solid #C6C8CB;}
-table a:visited {color: #777;}
-table a:hover {color: #000;}
-table caption {text-align: left; text-transform: uppercase;  padding-bottom: 10px; font: 200% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;}
-table thead th {background: #3A4856; padding: 15px 10px; color: #fff; text-align: left; font-weight: normal;}
-table tbody, table thead {border-left: 1px solid #EAECEE; border-right: 1px solid #EAECEE;}
-table tbody {border-bottom: 1px solid #EAECEE;}
-table tbody td, table tbody th {padding: 10px; text-align: left;}
-table tbody tr {background: #F3F5F7;}
-table tbody tr.odd {background: #F0F2F4;}
-table tbody  tr:hover {background: #EAECEE; color: #111;}
-table tfoot td, table tfoot th, table tfoot tr {text-align: left; font: 120%  "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; text-transform: uppercase; background: #fff; padding: 10px;}
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PhiPhi Sample Project</title>
+    <%--<script type='text/javascript' src='script/jquery-1.7.2.js'></script>--%>
+
+    <link href="https://github.global.ssl.fastly.net/assets/github-4288f026700410ae032b5d324dea2b4571789d7c.css" media="all" rel="stylesheet" type="text/css">
 
 
-</style>
-<script type="text/javascript">
-	
-</script>
+    <script type="text/javascript">
 
+    </script>
 </head>
-<body>
-<div id="content">
-	<div id="title">
-	<h2>떼인돈 받아들입니다!!</h2>
-	</div>
-	<div id="receivable">
-	<table>
-        <caption>받을 돈</caption>
-        <thead>
-            <tr>
-                <th scope="col">빌려간 사람</th>
-                <th scope="col">금액</th>
-            </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="receivable" items="${receivableList}" varStatus="status">
-            <c:if test="${receivable.amount > 0}">
-            <tr >
-                <td>${receivable.debtor }</td>
-                <td>${receivable.amount }</td>
-            </tr>
-            </c:if>
-        </c:forEach>
-        </tbody>
-	</table>
-	</div>
-     <p></p>
-    <div id="debt">
-        <table>
-            <caption>값을 돈</caption>
-            <thead>
-            <tr>
-                <th scope="col">빌려준 사람</th>
-                <th scope="col">금액</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="debt" items="${debtList}" varStatus="status">
-                <c:if test="${debt.amount > 0}">
-                <tr >
-                    <td>${debt.creditor }</td>
-                    <td>${debt.amount }</td>
-                </tr>
-                </c:if>
-            </c:forEach>
-            </tbody>
-        </table>
+<body class="logged_out  env-production macintosh   homepage" >
+<div class="wrapper">
+    <div class="header header-logged-out">
+        <div class="container clearfix">
+            <a class="header-logo-wordmark">
+                <h1>PhiPhi</h1>
+            </a>
+        </div>
     </div>
 
-    <p>
+    <div class="site clearfix">
+        <div id="site-container" class="context-loader-container" data-pjax-container="">
+            <div class="marketing-section marketing-section-signup">
+                <div class="container">
+                    <form accept-charset="UTF-8" action="/login" autocomplete="off" class="form-signup-home js-form-signup-home" method="post">
+                        <dl class="form">
+                            <dd>
+                                <input type="text" name="userId" class="textfield" placeholder="Your nickname" />
+                            </dd>
+                        </dl>
+                        <dl class="form">
+                            <dd>
+                                <input type="password" name="password" class="textfield" placeholder="Your password" />
+                            </dd>
+                            <p class="text-muted">회원가입은 아직 받지 않습니다! <br>자신의 닉네임과 패스워드가 동일합니다.</p>
+                        </dl>
+                        <button class="button primary button-block" size=10 type="submit">Login in</button>
+                        <p><p><p><p>
+                    </form>
+                    <h1 class="heading">떼인 돈<br> 받아드립니다~!</h1>
+                    <p class="subheading">그동안 말하기 불편하셨죠? <a href="#">지금 바로 가입하세요</a></p>
+                </div>
 
-	<div id="footer">
-	</div>
+                <div class="marketing-section-depth"></div>
+            </div>
+        </div>
+        <div class="modal-backdrop"></div>
+    </div>
 </div>
-</body>
-</html>
+
+</body></html>
