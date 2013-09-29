@@ -91,4 +91,12 @@ public class DebtBO {
     public List<DebtDependency> selectReceivableList(String creditor) {
         return debtDependencyDAO.selectReceivableList(creditor);
     }
+
+    public List<DebtHistory> selectDebtHistoryList(String debtor) {
+        return debtHistoryDAO.selectDebtHistoryList(debtor);
+    }
+
+    public List<DebtHistory> selectReceivableHistoryList(String creditor) {
+        return debtHistoryDAO.selectReceivableHistoryList(creditor);
+    }
 }

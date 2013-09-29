@@ -1,6 +1,7 @@
 package me.blog.youreme.payback.dao;
 
 import me.blog.youreme.payback.model.DebtDependency;
+import me.blog.youreme.payback.model.DebtHistory;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

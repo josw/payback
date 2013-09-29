@@ -123,9 +123,6 @@
 
                     <div class="rule"></div>
 
-                    <a href="#" class="minibutton js-manage-labels manage-labels-toggle" id="manage-labels">Manage
-                        Friends</a>
-
                 </div>
             </div>
 
@@ -173,13 +170,13 @@
                                 <span class="list-group-item-number">${payback.amount}</span>
                                 <h4 class="list-group-item-name">
                                     <span class="type-icon octicon octicon-issue-opened open" title="Open issue"></span>
-                                    <a href="#" class="js-navigation-open">[Creditor] ${payback.creditor} ==> [debtor] ${payback.debtor}</a>
+                                    <a href="#" class="js-navigation-open">[${payback.regdate}] <font color="#4169e1">${payback.reason}</font></a>
                                 </h4>
                                 <ul class="list-group-item-meta">
-                                    <li>
-                                        <time class="js-relative-date" datetime="2013-09-27T06:13:59-07:00"
-                                              title="2013-09-27 06:13:59">2 days ago
-                                        </time>
+                                    <li>  [Creditor] ${payback.creditor} ==> [debtor] ${payback.debtor}
+                                        <%--<time class="js-relative-date" datetime="2013-09-27T06:13:59-07:00"--%>
+                                              <%--title="2013-09-27 06:13:59">2 days ago--%>
+                                        <%--</time>--%>
                                     </li>
                                 </ul>
                             </li>

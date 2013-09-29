@@ -1,13 +1,11 @@
 package me.blog.youreme.payback.action;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import me.blog.youreme.payback.bo.DebtBO;
 import me.blog.youreme.payback.model.DebtDependency;
 
+import me.blog.youreme.payback.model.DebtHistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,34 +20,27 @@ public class DebtAction {
 
 	@RequestMapping("/payback")
 	public String payback(ModelMap model, @PathVariable String userId) {
-		List<DebtDependency> paybackList = new ArrayList<DebtDependency>();
-		List<DebtDependency> debtList = debtBO.selectDebtList(userId);
-		List<DebtDependency> receivableList = debtBO.selectReceivableList(userId);
-		paybackList.addAll(debtList);
-		paybackList.addAll(receivableList);
+        Map<String, Object> commonData = getCommonData(userId);
+        
+        List<DebtHistory> paybackList = new ArrayList<DebtHistory>();
+        paybackList.addAll((List<DebtHistory>) commonData.get("debtHistoryList"));
+        paybackList.addAll((List<DebtHistory>) commonData.get("receivableHistoryList"));
 
-		model.addAttribute("userId", userId);
-		model.addAttribute("paybackList", paybackList);
-
-        Map<String, Object> commanData = getCommonData(debtList, receivableList);
-
-        model.addAttribute("paybackCount", commanData.get("paybackCount"));
-        model.addAttribute("dependency", commanData.get("dependency"));
-        model.addAttribute("debtKey", commanData.get("debtKey"));
+        model.addAttribute("userId", userId);
+        model.addAttribute("paybackList", paybackList);
+        model.addAttribute("paybackCount", commonData.get("paybackCount"));
+        model.addAttribute("dependency", commonData.get("dependency"));
+        model.addAttribute("debtKey", commonData.get("debtKey"));
 
 		return "payback";
 	}
 
 	@RequestMapping("/payback/debt")
 	public String debt(ModelMap model, @PathVariable String userId) {
-		List<DebtDependency> debtList = debtBO.selectDebtList(userId);
-		List<DebtDependency> receivableList = debtBO.selectReceivableList(userId);
+        Map<String, Object> commanData = getCommonData(userId);
 
-		model.addAttribute("userId", userId);
-		model.addAttribute("paybackList", debtList);
-
-        Map<String, Object> commanData = getCommonData(debtList, receivableList);
-
+        model.addAttribute("userId", userId);
+		model.addAttribute("paybackList", commanData.get("debtHistoryList"));
         model.addAttribute("paybackCount", commanData.get("paybackCount"));
         model.addAttribute("dependency", commanData.get("dependency"));
         model.addAttribute("debtKey", commanData.get("debtKey"));
@@ -59,14 +50,10 @@ public class DebtAction {
 
 	@RequestMapping("/payback/receivable")
 	public String receivable(ModelMap model, @PathVariable String userId) {
-		List<DebtDependency> debtList = debtBO.selectDebtList(userId);
-		List<DebtDependency> receivableList = debtBO.selectReceivableList(userId);
+        Map<String, Object> commanData = getCommonData(userId);
 
-		model.addAttribute("userId", userId);
-		model.addAttribute("paybackList", receivableList);
-
-        Map<String, Object> commanData = getCommonData(debtList, receivableList);
-
+        model.addAttribute("userId", userId);
+        model.addAttribute("paybackList", commanData.get("receivableHistoryList"));
         model.addAttribute("paybackCount", commanData.get("paybackCount"));
         model.addAttribute("dependency", commanData.get("dependency"));
         model.addAttribute("debtKey", commanData.get("debtKey"));
@@ -74,16 +61,23 @@ public class DebtAction {
 		return "payback";
 	}
 
-	protected Map<String, Object> getCommonData(List<DebtDependency> debtList, List<DebtDependency> receivableList) {
-		Map<String, Object> commonData = new HashMap<String, Object>();
+	protected Map<String, Object> getCommonData(String userId) {
+        Map<String, Object> commonData = new HashMap<String, Object>();
+
+        List<DebtHistory> debtHistoryList = debtBO.selectDebtHistoryList(userId);
+        List<DebtHistory> receivableHistoryList = debtBO.selectReceivableHistoryList(userId);
 
 		Map<String, Integer> paybackCount = new HashMap<String, Integer>();
-		paybackCount.put("all", debtList.size() + receivableList.size());
-		paybackCount.put("debt", debtList.size());
-		paybackCount.put("receivable", receivableList.size());
+		paybackCount.put("all", debtHistoryList.size() + receivableHistoryList.size());
+		paybackCount.put("debt", debtHistoryList.size());
+		paybackCount.put("receivable", receivableHistoryList.size());
 
+        commonData.put("debtHistoryList", debtHistoryList);
+        commonData.put("receivableHistoryList", receivableHistoryList);
 		commonData.put("paybackCount", paybackCount);
 
+        List<DebtDependency> debtList = debtBO.selectDebtList(userId);
+        List<DebtDependency> receivableList = debtBO.selectReceivableList(userId);
 		Map<String, Integer> dependency = new HashMap<String, Integer>();
 		for (DebtDependency debt : debtList) {
 			String uid = debt.getCreditor();

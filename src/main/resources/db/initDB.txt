@@ -1,7 +1,7 @@
 CREATE TABLE User (
      userId     TEXT PRIMARY KEY,
      password     TEXT,
-     regdate     DATE
+     regdate     TEXT
 );
 
 CREATE TABLE DebtHistory (
@@ -9,8 +9,8 @@ CREATE TABLE DebtHistory (
      debtor 	TEXT,
 	 amount	    NUMERIC,
 	 reason		TEXT,
-	 completed  BOOLEAN DEFAULT FALSE,
-     regdate    DATE
+	 complete  NUMERIC DEFAULT 0,
+     regdate    TEXT
 );
 
 CREATE TABLE DebtDependency (
