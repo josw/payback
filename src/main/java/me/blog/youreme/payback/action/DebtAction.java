@@ -16,14 +16,10 @@ public class DebtAction {
     @Autowired
     DebtBO debtBO;
 
-    protected String getUserId() {
-        return "hunky";
-    }
-
     @RequestMapping("/debt")
 	public String index(ModelMap model, @PathVariable String userId) {
-        List<DebtDependency> debtList = debtBO.selectDebtList(getUserId());
-        List<DebtDependency> receivableList = debtBO.selectReceivableList(getUserId());
+        List<DebtDependency> debtList = debtBO.selectDebtList(userId);
+        List<DebtDependency> receivableList = debtBO.selectReceivableList(userId);
 
         model.addAttribute("debtList", debtList);
         model.addAttribute("receivableList", receivableList);
