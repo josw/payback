@@ -13,7 +13,7 @@ CREATE TABLE DebtHistory (
 );
 
 CREATE TABLE DebtDependency (
-     creditor	TEXT PRIMARY KEY,
+     creditor	TEXT,
      debtor 	TEXT,
 	 amount	    NUMERIC
 );

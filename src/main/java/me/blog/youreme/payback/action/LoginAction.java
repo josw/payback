@@ -31,7 +31,7 @@ public class LoginAction {
         User user = loginBO.getUser(userId);
 
         if (user != null && password.equals(user.getPassword())) {
-            return "redirect:/" + userId + "/debt";
+            return "redirect:/" + userId + "/payback";
         } else {
             return "index";
         }

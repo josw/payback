@@ -32,10 +32,10 @@ public class DebtBOTest {
     @Test
     public void testInsertDebt() {
         DebtHistory debtHistory = new DebtHistory();
-        debtHistory.setCreditor("jayjay");
+        debtHistory.setCreditor("rouka");
         debtHistory.setDebtor("hunky");
-        debtHistory.setAmount(3000);
-        debtHistory.setReason("test1");
+        debtHistory.setAmount(2000);
+        debtHistory.setReason("점심값");
         debtBO.insertDebt(debtHistory);
     }
 }
