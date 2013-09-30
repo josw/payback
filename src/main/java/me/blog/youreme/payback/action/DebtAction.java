@@ -6,11 +6,13 @@ import me.blog.youreme.payback.bo.DebtBO;
 import me.blog.youreme.payback.model.DebtDependency;
 
 import me.blog.youreme.payback.model.DebtHistory;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/{userId}")
@@ -104,5 +106,32 @@ public class DebtAction {
 
 		return commonData;
 	}
+
+    @RequestMapping("/payback/new")
+    public String newDebt(ModelMap model, @PathVariable String userId,
+            @RequestParam(required = false) String debtor, @RequestParam(required = false) String amount,
+            @RequestParam(required = false) String reason, @RequestParam(required = false) String type) {
+
+        if (StringUtils.isBlank(debtor)) {
+            model.addAttribute("userId", userId);
+            return "debt";
+        } else {
+            DebtHistory debtHistory = new DebtHistory();
+            if ("0".equals(type)) {
+                debtHistory.setCreditor(debtor);
+                debtHistory.setDebtor(userId);
+            } else {
+                debtHistory.setCreditor(userId);
+                debtHistory.setDebtor(debtor);
+            }
+
+            debtHistory.setAmount(Integer.parseInt(amount));
+            debtHistory.setReason(reason);
+            debtHistory.setComplete(0);
+            debtBO.insertDebt(debtHistory);
+
+            return "redirect:/" + userId + "/payback";
+        }
+    }
 
 }

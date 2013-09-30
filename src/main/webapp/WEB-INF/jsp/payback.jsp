@@ -85,40 +85,6 @@
                             </a>
                         </li>
                         </c:forEach>
-                        <%--
-                        <li>
-                            <a href="/ari/payback" class="filter-item color-label  labelstyle-cccccc zeroed"
-                               data-label="duplicate" rel="nofollow">
-                                <span class="count">3500</span>
-                                <span class="color" style="background-color: #cccccc">&nbsp;</span>
-                                <span class="octicon octicon-remove-close"></span>
-                                <span class="name">ari</span>
-                            </a></li>
-                        <li>
-                            <a href="/kal/payback" class="filter-item color-label  labelstyle-84b6eb zeroed"
-                               data-label="enhancement" rel="nofollow">
-                                <span class="count">500</span>
-                                <span class="color" style="background-color: #84b6eb">&nbsp;</span>
-                                <span class="octicon octicon-remove-close"></span>
-                                <span class="name">kal</span>
-                            </a></li>
-                        <li>
-                            <a href="/quick/payback" class="filter-item color-label  labelstyle-e6e6e6 zeroed"
-                               data-label="invalid" rel="nofollow">
-                                <span class="count">2700</span>
-                                <span class="color" style="background-color: #e6e6e6">&nbsp;</span>
-                                <span class="octicon octicon-remove-close"></span>
-                                <span class="name">quick</span>
-                            </a></li>
-                        <li>
-                            <a href="/mathew/payback" class="filter-item color-label  labelstyle-cc317c zeroed"
-                               data-label="question" rel="nofollow">
-                                <span class="count">0</span>
-                                <span class="color" style="background-color: #cc317c">&nbsp;</span>
-                                <span class="octicon octicon-remove-close"></span>
-                                <span class="name">mathew</span>
-                            </a></li>
-                        --%>
                     </ul>
 
                     <div class="rule"></div>
