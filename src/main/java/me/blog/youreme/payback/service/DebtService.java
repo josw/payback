@@ -1,15 +1,14 @@
-package me.blog.youreme.payback.bo;
+package me.blog.youreme.payback.service;
 
-import me.blog.youreme.payback.dao.DebtDependencyDAO;
-import me.blog.youreme.payback.dao.DebtHistoryDAO;
+import java.util.List;
+
 import me.blog.youreme.payback.model.DebtDependency;
 import me.blog.youreme.payback.model.DebtHistory;
+import me.blog.youreme.payback.repository.DebtDependencyRepository;
+import me.blog.youreme.payback.repository.DebtHistoryRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,12 +18,12 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 @Service
-public class DebtBO {
+public class DebtService {
     @Autowired
-    DebtHistoryDAO debtHistoryDAO;
+    DebtHistoryRepository debtHistoryRepository;
 
     @Autowired
-    DebtDependencyDAO debtDependencyDAO;
+    DebtDependencyRepository debtDependencyRepository;
 
     /**
      * 1. 빌려준 돈 히스토리 저장.
@@ -34,12 +33,14 @@ public class DebtBO {
      * @param debtHistory
      */
     public void insertDebt(DebtHistory debtHistory) {
-        debtHistoryDAO.insertDebtHistory(debtHistory);
+        debtHistoryRepository.save(debtHistory);
+//        debtHistoryRepository.insertDebtHistory(debtHistory);
 
         DebtDependency debtCondition = new DebtDependency();
         debtCondition.setCreditor(debtHistory.getDebtor());
         debtCondition.setDebtor(debtHistory.getCreditor());
-        DebtDependency debt = debtDependencyDAO.selectDebtDependency(debtCondition);
+        //DebtDependency debt = debtDependencyRepository.selectDebtDependency(debtCondition.getCreditor(), debtCondition.getDebtor());
+        DebtDependency debt = debtDependencyRepository.findDebtDependencyByCreditorAndDebtor(debtCondition.getCreditor(), debtCondition.getDebtor());
 
         if (debt != null) {
             // 빌린돈이 있다 => 받을돈이 없거나 0원이다.
@@ -59,7 +60,8 @@ public class DebtBO {
             DebtDependency receivableCondition = new DebtDependency();
             receivableCondition.setCreditor(debtHistory.getCreditor());
             receivableCondition.setDebtor(debtHistory.getDebtor());
-            DebtDependency receivable = debtDependencyDAO.selectDebtDependency(receivableCondition);
+            //DebtDependency receivable = debtDependencyRepository.selectDebtDependency(receivableCondition.getCreditor(), receivableCondition.getDebtor());
+            DebtDependency receivable = debtDependencyRepository.findDebtDependencyByCreditorAndDebtor(receivableCondition.getCreditor(), receivableCondition.getDebtor());
 
             if (receivable != null) {
                 // 받을 돈이 있을 경우 더해준다.
@@ -77,26 +79,21 @@ public class DebtBO {
         debtDependency.setDebtor(debtor);
         debtDependency.setAmount(amount);
 
-        int count = debtDependencyDAO.selectDebtDependencyCount(debtDependency);
-        if (count>0) {
-            debtDependencyDAO.updateDebtDependency(debtDependency);
-        } else {
-            debtDependencyDAO.insertDebtDependency(debtDependency);
-        }
+        debtDependencyRepository.save(debtDependency);
     }
 
     public List<DebtDependency> selectDebtList(String debtor) {
-        return debtDependencyDAO.selectDebtList(debtor);
+        return debtDependencyRepository.selectDebtList(debtor);
     }
     public List<DebtDependency> selectReceivableList(String creditor) {
-        return debtDependencyDAO.selectReceivableList(creditor);
+        return debtDependencyRepository.selectReceivableList(creditor);
     }
 
     public List<DebtHistory> selectDebtHistoryList(String debtor) {
-        return debtHistoryDAO.selectDebtHistoryList(debtor);
+        return debtHistoryRepository.selectDebtHistoryList(debtor);
     }
 
     public List<DebtHistory> selectReceivableHistoryList(String creditor) {
-        return debtHistoryDAO.selectReceivableHistoryList(creditor);
+        return debtHistoryRepository.selectReceivableHistoryList(creditor);
     }
 }

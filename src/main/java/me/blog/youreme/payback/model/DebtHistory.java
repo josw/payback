@@ -1,5 +1,10 @@
 package me.blog.youreme.payback.model;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -9,59 +14,15 @@ import java.util.Date;
  * Time: 오전 1:56
  * To change this template use File | Settings | File Templates.
  */
-public class DebtHistory extends BaseObject {
+@Data
+@Entity
+@Table(name = "DebtHistory")
+public class DebtHistory {
+    @Id
     private String creditor;
     private String debtor;
     private int amount;
     private String reason;
-    private int complete;
-    private String regdate;
-
-    public String getRegdate() {
-        return regdate;
-    }
-
-    public void setRegdate(String regdate) {
-        this.regdate = regdate;
-    }
-
-    public int getComplete() {
-        return complete;
-    }
-
-    public void setComplete(int complete) {
-        this.complete = complete;
-    }
-
-    public String getCreditor() {
-        return creditor;
-    }
-
-    public void setCreditor(String creditor) {
-        this.creditor = creditor;
-    }
-
-    public String getDebtor() {
-        return debtor;
-    }
-
-    public void setDebtor(String debtor) {
-        this.debtor = debtor;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
+    private boolean complete;
+    private Date regdate;
 }

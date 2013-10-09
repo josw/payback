@@ -9,3 +9,15 @@ INSERT INTO User VALUES ('mathew', 'mathew', DATETIME('NOW'));
 INSERT INTO User VALUES ('ellan', 'ellan', DATETIME('NOW'));
 INSERT INTO User VALUES ('pooh', 'pooh', DATETIME('NOW'));
 INSERT INTO User VALUES ('rouka', 'rouka', DATETIME('NOW'));
+
+INSERT INTO User VALUES ('hunky', 'hunky', NOW());
+INSERT INTO User VALUES ('jayjay', 'jayjay', NOW());
+INSERT INTO User VALUES ('ari', 'ari', NOW());
+INSERT INTO User VALUES ('kal', 'kal', NOW());
+INSERT INTO User VALUES ('quick', 'quick', NOW());
+INSERT INTO User VALUES ('sipo', 'sipo', NOW());
+INSERT INTO User VALUES ('pang', 'pang', NOW());
+INSERT INTO User VALUES ('mathew', 'mathew', NOW());
+INSERT INTO User VALUES ('elan', 'ellan', NOW());
+INSERT INTO User VALUES ('pooh', 'pooh', NOW());
+INSERT INTO User VALUES ('rouka', 'rouka', NOW());

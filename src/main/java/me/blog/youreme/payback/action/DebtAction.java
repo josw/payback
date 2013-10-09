@@ -2,7 +2,7 @@ package me.blog.youreme.payback.action;
 
 import java.util.*;
 
-import me.blog.youreme.payback.bo.DebtBO;
+import me.blog.youreme.payback.service.DebtService;
 import me.blog.youreme.payback.model.DebtDependency;
 
 import me.blog.youreme.payback.model.DebtHistory;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/{userId}")
 public class DebtAction {
 	@Autowired
-	DebtBO debtBO;
+    DebtService debtService;
 
 	@RequestMapping("/payback")
 	public String payback(ModelMap model, @PathVariable String userId) {
@@ -66,8 +66,8 @@ public class DebtAction {
 	protected Map<String, Object> getCommonData(String userId) {
         Map<String, Object> commonData = new HashMap<String, Object>();
 
-        List<DebtHistory> debtHistoryList = debtBO.selectDebtHistoryList(userId);
-        List<DebtHistory> receivableHistoryList = debtBO.selectReceivableHistoryList(userId);
+        List<DebtHistory> debtHistoryList = debtService.selectDebtHistoryList(userId);
+        List<DebtHistory> receivableHistoryList = debtService.selectReceivableHistoryList(userId);
 
 		Map<String, Integer> paybackCount = new HashMap<String, Integer>();
 		paybackCount.put("all", debtHistoryList.size() + receivableHistoryList.size());
@@ -78,8 +78,8 @@ public class DebtAction {
         commonData.put("receivableHistoryList", receivableHistoryList);
 		commonData.put("paybackCount", paybackCount);
 
-        List<DebtDependency> debtList = debtBO.selectDebtList(userId);
-        List<DebtDependency> receivableList = debtBO.selectReceivableList(userId);
+        List<DebtDependency> debtList = debtService.selectDebtList(userId);
+        List<DebtDependency> receivableList = debtService.selectReceivableList(userId);
 		Map<String, Integer> dependency = new HashMap<String, Integer>();
 		for (DebtDependency debt : debtList) {
 			String uid = debt.getCreditor();
@@ -127,8 +127,8 @@ public class DebtAction {
 
             debtHistory.setAmount(Integer.parseInt(amount));
             debtHistory.setReason(reason);
-            debtHistory.setComplete(0);
-            debtBO.insertDebt(debtHistory);
+            debtHistory.setComplete(false);
+            debtService.insertDebt(debtHistory);
 
             return "redirect:/" + userId + "/payback";
         }

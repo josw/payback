@@ -1,6 +1,6 @@
 package me.blog.youreme.payback.action;
 
-import me.blog.youreme.payback.bo.LoginBO;
+import me.blog.youreme.payback.service.LoginService;
 
 import me.blog.youreme.payback.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginAction {
     @Autowired
-    LoginBO loginBO;
+    LoginService loginService;
 
     @RequestMapping("/")
     public String index() {
@@ -28,7 +28,7 @@ public class LoginAction {
 
     @RequestMapping("/login")
     public String login(ModelMap mav, @RequestParam("userId") String userId, @RequestParam("password") String password) {
-        User user = loginBO.getUser(userId);
+        User user = loginService.getUser(userId);
 
         if (user != null && password.equals(user.getPassword())) {
             return "redirect:/" + userId + "/payback";

@@ -129,6 +129,15 @@
                 <div class="chromed-list-browser issues">
                     <div class="issues issues-list js-issues-list js-navigation-container js-active-navigation-container js-form-issues js-selectable-issues">
                         <ul class="list-group issue-list-group">
+
+                            <li class="list-group-item issues-list-actions">
+                                <div class="js-buttons button-wrap">
+                                    <label class="select-all">
+                                        <input type="checkbox" class="js-issues-list-select-all">
+                                    </label>
+                                    <a href="#" class="button minibutton js-issues-list-close " data-hotkey="e" data-url="/${userId}/payback/close">Complete</a>
+                                </div>
+                            </li>
                             <c:forEach var="payback" items="${paybackList}" varStatus="status">
                             <li class="list-group-item issue-list-item js-list-browser-item js-navigation-item read selectable <c:if test='${payback.creditor == userId}'>navigation-focus</c:if>">
                                 <div class="issue-item-unread"></div>

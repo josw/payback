@@ -1,7 +1,7 @@
-package me.blog.youreme.payback.bo;
+package me.blog.youreme.payback.service;
 
-import me.blog.youreme.payback.dao.UserDAO;
 import me.blog.youreme.payback.model.User;
+import me.blog.youreme.payback.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
  * To change this template use File | Settings | File Templates.
  */
 @Service
-public class LoginBO {
+public class LoginService {
     @Autowired
-    UserDAO userDAO;
+    UserRepository userRepository;
 
     public User getUser(String userId) {
-           return userDAO.selectUser(userId);
+           return userRepository.findOne(userId);
     }
 }

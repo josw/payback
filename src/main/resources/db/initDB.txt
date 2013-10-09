@@ -18,3 +18,25 @@ CREATE TABLE DebtDependency (
      debtor 	TEXT,
 	 amount	    NUMERIC
 );
+
+CREATE TABLE IF NOT EXISTS `User` (
+  `userId` varchar(20) NOT NULL COMMENT '사용자ID',
+  `password` varchar(20) NOT NULL COMMENT '사용자패스워드',
+  `regdate` datetime NOT NULL COMMENT '등록일'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='사용자테이블';
+
+
+CREATE TABLE IF NOT EXISTS `DebtHistory` (
+  `creditor` varchar(20) NOT NULL COMMENT '채권자',
+  `debtor` varchar(20) NOT NULL COMMENT '채무자',
+  `amount` int(10) NOT NULL COMMENT '금액',
+  `reason` varchar(100) NOT NULL COMMENT '이유',
+  `complete` boolean NOT NULL DEFAULT false COMMENT '이유',
+  `regdate` datetime NOT NULL COMMENT '등록일'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='채무 테이블';
+
+CREATE TABLE IF NOT EXISTS `DebtDependency` (
+  `creditor` varchar(20) NOT NULL COMMENT '채권자',
+  `debtor` varchar(20) NOT NULL COMMENT '채무자',
+  `amount` int(10) NOT NULL COMMENT '금액'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='채무 테이블';

@@ -1,38 +1,22 @@
 package me.blog.youreme.payback.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
 /**
- * Created with IntelliJ IDEA.
  * User: youreme
  * Date: 13. 9. 27.
  * Time: 오전 1:58
- * To change this template use File | Settings | File Templates.
  */
-public class DebtDependency extends BaseObject {
+@Data
+@Entity
+@Table(name = "DebtDependency")
+public class DebtDependency {
+    @Id
     private String creditor;
     private String debtor;
     private int amount;
-
-    public String getCreditor() {
-        return creditor;
-    }
-
-    public void setCreditor(String creditor) {
-        this.creditor = creditor;
-    }
-
-    public String getDebtor() {
-        return debtor;
-    }
-
-    public void setDebtor(String debtor) {
-        this.debtor = debtor;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 }
