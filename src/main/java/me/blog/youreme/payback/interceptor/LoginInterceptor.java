@@ -7,11 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created with IntelliJ IDEA.
  * User: youreme
  * Date: 13. 9. 29.
  * Time: 오후 1:06
- * To change this template use File | Settings | File Templates.
  */
 public class LoginInterceptor extends WebContentInterceptor {
     @Override

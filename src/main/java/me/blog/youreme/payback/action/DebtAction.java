@@ -128,6 +128,7 @@ public class DebtAction {
             debtHistory.setAmount(Integer.parseInt(amount));
             debtHistory.setReason(reason);
             debtHistory.setComplete(false);
+            debtHistory.setRegdate(new Date());
             debtService.insertDebt(debtHistory);
 
             return "redirect:/" + userId + "/payback";
