@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Created with IntelliJ IDEA.
  * User: youreme
  * Date: 13. 9. 28.
  * Time: 오후 11:28
- * To change this template use File | Settings | File Templates.
  */
 @Controller
 public class LoginAction {

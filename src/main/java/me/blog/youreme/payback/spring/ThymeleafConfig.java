@@ -7,11 +7,9 @@ import org.thymeleaf.spring3.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 /**
- * Created with IntelliJ IDEA.
  * User: youreme
  * Date: 13. 10. 6.
  * Time: 오후 4:37
- * To change this template use File | Settings | File Templates.
  */
 @Configuration
 public class ThymeleafConfig {

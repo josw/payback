@@ -15,17 +15,17 @@ import org.springframework.data.repository.query.Param;
  * Time: 오후 10:55
  */
 public interface DebtDependencyRepository extends JpaRepository<DebtDependency, String> {
-    @Query("SELECT creditor, debtor, amount FROM DebtDependency WHERE creditor = :creditor AND debtor = :debtor")
-    public DebtDependency selectDebtDependency(String creditor, String debtor);
+//    @Query("SELECT dependency FROM DebtDependency dependency WHERE creditor = :creditor AND debtor = :debtor")
+//    public DebtDependency selectDebtDependency(String creditor, String debtor);
+//
+//    @Query("SELECT count(crditor) FROM DebtDependency WHERE creditor = :creditor AND debtor = :debtor")
+//    public int selectDebtDependencyCount(String creditor, String debtor);
 
-    @Query("SELECT count(crditor) FROM DebtDependency WHERE creditor = :creditor AND debtor = :debtor")
-    public int selectDebtDependencyCount(String creditor, String debtor);
+    @Query("SELECT dependency FROM DebtDependency dependency WHERE debtor = :debtor")
+    public List<DebtDependency> selectDebtList(@Param("debtor") String debtor);
 
-    @Query("SELECT creditor, debtor, amount FROM DebtDependency WHERE debtor = :debtor")
-    public List<DebtDependency> selectDebtList(String debtor);
-
-    @Query("SELECT creditor, debtor, amount FROM DebtDependency WHERE creditor = :creditor")
-    public List<DebtDependency> selectReceivableList(String creditor);
+    @Query("SELECT dependency FROM DebtDependency dependency WHERE creditor = :creditor")
+    public List<DebtDependency> selectReceivableList(@Param("creditor")String creditor);
 
     DebtDependency findDebtDependencyByCreditorAndDebtor(@Param("creditor") String creditor, @Param("debtor") String debtor);
 }

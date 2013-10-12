@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'/>
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <title>떼인돈 받아드립니다.</title>
+
+    <link href="https://github.global.ssl.fastly.net/assets/github-4288f026700410ae032b5d324dea2b4571789d7c.css"
+          media="all" rel="stylesheet" type="text/css"/>
+    <link href="https://github.global.ssl.fastly.net/assets/github2-88d5087029dbe346f413843c4cb0149921840ef5.css"
+          media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body class="logged_in  env-production macintosh vis-public" style="">
+<div class="wrapper">
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+        <div class="container">
+            <h1>
+                <span class="mega-octicon octicon-repo"></span>
+                <span class="author">
+                    <a href="#" th:href="@{/__${userId}__/payback}" class="url fn" itemprop="url" rel="author"><span itemprop="title" th:text="${userId}">hunky</span></a></span>
+                <span class="repohead-name-divider">/</span><strong><a href="#" th:href="@{/__${userId}__/payback}" class="js-current-repository js-repo-home-link">payback</a></strong>
+            </h1>
+        </div>
+        <!-- /.container -->
+    </div>
+
+    <div class="container">
+
+        <div class="repository-with-sidebar repo-container">
+
+            <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container="">
+                <div id="issues_next">
+                    <div class="tabnav">
+                        <div class="tabnav-right">
+                            <div class="tabnav-widget ">
+                                <a href="#" th:href="@{/__${userId}__/payback/new}" class="button minibutton primary bigger js-new-issue-button" data-hotkey="c">New Debt</a>
+                            </div>
+                        </div>
+
+                        <ul class="tabnav-tabs">
+                            <li><a href="#" th:href="@{/__${userId}__/payback}" class="tabnav-tab selected">Payback</a></li>
+                        </ul>
+                    </div>
+                    <div id="issues_list" class="js-issues-results columns browser" data-pjax-container=""
+                         data-url="/${userId}/payback">
+
+                        <div class="column sidebar issues-list-sidebar js-issue-sidebar">
+                            <ul class="filter-list js-pjax-active" data-pjax="">
+                                <li>
+                                    <a href="#" th:href="@{/__${userId}__/payback}" class="filter-item selected">
+                                        <span class="count" th:text="${paybackCount[all]}">999</span> Show All
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" th:href="@{/__${userId}__/payback/debt}" class="filter-item">
+                                        <span class="count" th:text="${paybackCount[debt]}">444</span> Assigned to you
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" th:href="@{/__${userId}__/payback/receivable}" class="filter-item">
+                                        <span class="count" th:text="${paybackCount[receivable]}">333</span> Created by you
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="rule"></div>
+                            <div class="js-editable-labels-container">
+                                <ul class="js-color-label-list filter-list color-label-list small js-editable-labels-show" data-pjax="">
+                                    <h4>Friends</h4>
+                                    <li th:each="key : ${debtKey}">
+                                        <a href="#" th:href="@{/__${key}__/payback}" class="filter-item color-label  labelstyle-fc2929 zeroed" data-label="bug" rel="nofollow">
+                                            <span class="count" th:text="${dependency[__${key}__]}">3000</span>
+                                            <span class="color" style="background-color: #fc2929">&nbsp;</span>
+                                            <span class="octicon octicon-remove-close"></span>
+                                            <span class="name" th:text="${key}">jayjay</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="rule"></div>
+                            </div>
+                        </div>
+
+                        <div class="column main">
+                            <div class="issues-list-options" data-pjax="">
+                                <div class="select-menu js-issues-sort js-menu-container js-select-menu">
+  <span class="minibutton select-menu-button js-menu-target" role="button" tabindex="0">
+    <i>Sort:</i>
+    <span class="js-select-button">Newest</span>
+  </span>
+
+                                    <div class="select-menu-modal-holder js-menu-content js-navigation-container">
+
+                                        <div class="select-menu-modal">
+                                            <div class="select-menu-header">
+                                                <span class="select-menu-title">Sort options</span>
+                                                <span class="octicon octicon-remove-close js-menu-close"></span>
+                                            </div>
+                                            <div class="select-menu-list">
+                                                <a class="select-menu-item js-navigation-open js-navigation-item selected"
+                                                   href="/${userId}/payback?direction=desc&amp;page=1&amp;sort=created">
+                                                    <span class="select-menu-item-icon octicon octicon-check"></span>
+                                                    <span class="select-menu-item-text js-select-button-text">Newest</span>
+                                                </a>
+                                                <a class="select-menu-item js-navigation-open js-navigation-item "
+                                                   href="/${userId}/payback?direction=asc&amp;page=1&amp;sort=created">
+                                                    <span class="select-menu-item-icon octicon octicon-check"></span>
+                                                    <span class="select-menu-item-text js-select-button-text">Oldest</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="chromed-list-browser issues">
+                                <div class="issues issues-list js-issues-list js-navigation-container js-active-navigation-container js-form-issues js-selectable-issues">
+                                    <ul class="list-group issue-list-group">
+
+                                        <li class="list-group-item issues-list-actions">
+                                            <div class="js-buttons button-wrap">
+                                                <label class="select-all">
+                                                    <input type="checkbox" class="js-issues-list-select-all"/>
+                                                </label>
+                                                <a href="#" class="button minibutton js-issues-list-close "
+                                                   data-hotkey="e" data-url="/${userId}/payback/close">Complete</a>
+                                            </div>
+                                        </li>
+                                        <li th:each="payback : ${paybackList}"
+                                            class="list-group-item issue-list-item js-list-browser-item js-navigation-item read selectable">
+                                            <div class="issue-item-unread"></div>
+                                            <input type="checkbox"
+                                                   class="list-group-item-check js-issues-list-checkbox select-toggle-check"
+                                                   name="issues[]" value="8"/>
+                                            <span class="list-group-item-number" th:text="${payback.amount}">2000</span>
+                                            <h4 class="list-group-item-name">
+                                                <span class="type-icon octicon octicon-issue-opened open"
+                                                      title="Open issue"></span>
+                                            </h4>
+                                            <ul class="list-group-item-meta">
+                                                <li> [Creditor] <span th:text="${payback.creditor +' ==> [debtor] ' +payback.debtor}"></span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-backdrop"></div>
+    </div>
+</div>
+</body>
+</html>

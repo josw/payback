@@ -5,11 +5,9 @@ import me.blog.youreme.payback.model.ErrorCode;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA.
  * User: youreme
  * Date: 13. 10. 6.
  * Time: 오후 5:30
- * To change this template use File | Settings | File Templates.
  */
 public abstract class CommonException extends  RuntimeException {
     Map<String, ?> errorParamMap = null;
