@@ -1,17 +1,15 @@
 <!DOCTYPE HTML>
-<%@ page language="java" contentType="text/html; charset=UTF-8" session="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
 <head>
-    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
-    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
-    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8' />
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate" />
+    <meta http-equiv="pragma" content="no-cache" />
     <title>떼인돈 받아드립니다.</title>
 
     <link href="https://github.global.ssl.fastly.net/assets/github-4288f026700410ae032b5d324dea2b4571789d7c.css"
-          media="all" rel="stylesheet" type="text/css">
+          media="all" rel="stylesheet" type="text/css" />
     <link href="https://github.global.ssl.fastly.net/assets/github2-88d5087029dbe346f413843c4cb0149921840ef5.css"
-          media="all" rel="stylesheet" type="text/css">
+          media="all" rel="stylesheet" type="text/css" />
 
 <body class="logged_in  env-production macintosh vis-public" style="">
 <div class="wrapper">
