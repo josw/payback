@@ -60,6 +60,8 @@ public class PaybackWebApplicationInitializer implements WebApplicationInitializ
          */
 
         // Register and map the dispatcher servlet
+        container.getServletRegistration("default").addMapping("*.js", "*.css");
+
         ServletRegistration.Dynamic dispatcher = container.addServlet("payback", new DispatcherServlet(mvcContext));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");

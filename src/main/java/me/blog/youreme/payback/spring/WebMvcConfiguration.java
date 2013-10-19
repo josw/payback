@@ -32,7 +32,6 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  * Time: 오후 3:44
  */
 @Configuration
-@EnableWebMvc
 @ComponentScan(basePackages = { "me.blog.youreme" }, useDefaultFilters = false, includeFilters = @ComponentScan.Filter(Controller.class))
 @Import({ThymeleafConfig.class})
 @PropertySource(value = {"classpath:properties/common.properties", "classpath:properties/jdbc.properties"})
