@@ -1,9 +1,11 @@
 package me.blog.youreme.payback.spring;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import me.blog.youreme.payback.interceptor.LoginInterceptor;
 import me.blog.youreme.payback.spring.resolver.PaybackExceptionResolver;
 import me.blog.youreme.payback.spring.resolver.PaybackJsonHttpMessageConverter;
 
@@ -21,6 +23,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.handler.AbstractHandlerMapping;
@@ -36,12 +39,25 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 @Import({ThymeleafConfig.class})
 @PropertySource(value = {"classpath:properties/common.properties", "classpath:properties/jdbc.properties"})
 public class WebMvcConfiguration extends WebMvcConfigurationSupport {
-
     @Inject
     Environment environment;
 
     @Inject
     ApplicationContext applicationContext;
+
+    @Inject
+    LoginInterceptor loginInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        List<String> excludeURI = new ArrayList<String>();
+        excludeURI.add("/");
+        excludeURI.add("/login");
+
+        loginInterceptor.setExcludeURI(excludeURI);
+
+        registry.addInterceptor(loginInterceptor);
+    }
 
     @Override
     public RequestMappingHandlerMapping requestMappingHandlerMapping() {

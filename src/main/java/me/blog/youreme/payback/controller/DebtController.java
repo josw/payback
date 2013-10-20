@@ -1,4 +1,4 @@
-package me.blog.youreme.payback.action;
+package me.blog.youreme.payback.controller;
 
 import java.util.*;
 
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/{userId}")
-public class DebtAction {
+public class DebtController extends BaseController {
 	@Autowired
     DebtService debtService;
 

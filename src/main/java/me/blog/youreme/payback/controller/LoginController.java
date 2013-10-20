@@ -1,4 +1,4 @@
-package me.blog.youreme.payback.action;
+package me.blog.youreme.payback.controller;
 
 import me.blog.youreme.payback.service.LoginService;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
 
 /**
  * User: youreme
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Time: 오후 11:28
  */
 @Controller
-public class LoginAction {
+public class LoginController extends BaseController {
     @Autowired
     LoginService loginService;
 
