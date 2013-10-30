@@ -21,6 +21,6 @@ public class PaybackContext {
     }
 
     public static String getUserId() {
-        return getUser().getUserId();
+        return getUser().getEmail();
     }
 }

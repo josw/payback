@@ -1,7 +1,7 @@
 package me.blog.youreme.payback.spring.resolver;
 
 import lombok.ToString;
-import me.blog.youreme.payback.exception.CommonException;
+import me.blog.youreme.payback.exception.AbstractRuntimeException;
 import me.blog.youreme.payback.model.ErrorCode;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class ExceptionJsonContainer extends PaybackResultJsonContainer implements Serializable {
     private Map<String, ?> errParamMap = null;
 
-    public ExceptionJsonContainer(CommonException ex) {
+    public ExceptionJsonContainer(AbstractRuntimeException ex) {
         super(ex.getExceptionCode());
         this.errParamMap = ex.getErrorParamMap();
     }

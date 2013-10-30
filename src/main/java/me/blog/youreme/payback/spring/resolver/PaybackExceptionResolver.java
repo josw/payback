@@ -1,7 +1,9 @@
 package me.blog.youreme.payback.spring.resolver;
 
-import me.blog.youreme.payback.exception.CommonException;
+import me.blog.youreme.payback.exception.AbstractRuntimeException;
 import me.blog.youreme.payback.model.ErrorCode;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpOutputMessage;
@@ -35,7 +37,7 @@ public class PaybackExceptionResolver extends AbstractHandlerExceptionResolver {
 
         return new ModelAndView();
     }
-
+    
     @Override
     protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         if (logger.isDebugEnabled()) {
@@ -46,8 +48,8 @@ public class PaybackExceptionResolver extends AbstractHandlerExceptionResolver {
         }
 
         ExceptionJsonContainer result = null;
-        if (ex instanceof CommonException) {
-            result = new ExceptionJsonContainer((CommonException) ex);
+        if (ex instanceof AbstractRuntimeException) {
+            result = new ExceptionJsonContainer((AbstractRuntimeException) ex);
         } else if (ex instanceof IllegalArgumentException) {
             if (ex.getMessage() != null) {
                 result = new ExceptionJsonContainer(ErrorCode.REQ_WRONG, ex.getMessage());
@@ -60,6 +62,10 @@ public class PaybackExceptionResolver extends AbstractHandlerExceptionResolver {
 
         logger.warn("error in process", ex);
         ModelAndView mav = null;
+
+//        if (!"application/json".equalsIgnoreCase(request.getContentType())) {
+//        	return new ModelAndView("login_required");
+//        }
 
         try {
             mav = handleResponseBody(result, request, response);

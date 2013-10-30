@@ -98,7 +98,7 @@ public class PaybackConfiguration {
         jpaProterties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 //        jpaProterties.put("hibernate.dialect", "org.hibernate.dialect.MySQLMyISAMDialect");
         jpaProterties.put("hibernate.format_sql", true);
-//        jpaProterties.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
+        jpaProterties.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
         jpaProterties.put("hibernate.show_sql", true);
 
         entityManagerFactoryBean.setJpaProperties(jpaProterties);

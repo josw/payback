@@ -1,0 +1,46 @@
+<html>
+<head th:include="header :: script">
+
+
+
+</head>
+
+
+<script type="text/javascript">
+/*<![CDATA[*/
+           
+$(function() {
+	$('#frm').submit(function() {
+		
+		$.post('/register', $(this).serialize(), function(data) {
+			
+			if (data.code == '000') {
+				alert ('success');
+				location.href="/";
+			} else 
+				parseError(data);
+			
+		});
+		
+		return false;
+	});
+	
+});
+/*]]>*/
+</script>
+
+
+<span th:text="${aaa}">attr</span>
+
+
+
+<form method="post" id="frm">
+email : <input name="email" /> <br/>
+password : <input name="password" /><br/>
+name : <input name="name" /><br/>
+phone : <input name="phone" /><br/>
+<input type="submit" /><br/>
+
+</form>
+
+</html>

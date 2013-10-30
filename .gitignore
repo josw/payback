@@ -20,3 +20,4 @@ sonar-project.*
 rebel.xml
 buildSrc/
 db-migration/
+/.apt_generated

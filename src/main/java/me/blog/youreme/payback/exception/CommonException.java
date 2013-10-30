@@ -1,29 +1,19 @@
 package me.blog.youreme.payback.exception;
 
-import me.blog.youreme.payback.model.ErrorCode;
-
 import java.util.Map;
 
-/**
- * User: youreme
- * Date: 13. 10. 6.
- * Time: 오후 5:30
- */
-public abstract class CommonException extends  RuntimeException {
-    Map<String, ?> errorParamMap = null;
+import me.blog.youreme.payback.model.ErrorCode;
 
-    public CommonException() {
-        super();
-    }
+public class CommonException extends AbstractRuntimeException {
 
-    public CommonException(Map<String, ?> errorParamMap) {
-        super();
-        this.errorParamMap = errorParamMap;
-    }
+	private static final long serialVersionUID = 4236902621749375429L;
 
-    public abstract ErrorCode getExceptionCode();
-
-    public Map<String, ?> getErrorParamMap() {
-        return this.errorParamMap;
-    }
+	@Override
+	public ErrorCode getExceptionCode() {
+		return ErrorCode.ERR_EXEC;
+	}
+	
+	public CommonException(Map<String, String> errorParamMap) {
+		super(errorParamMap);
+	}
 }

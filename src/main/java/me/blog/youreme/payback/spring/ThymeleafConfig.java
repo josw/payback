@@ -1,5 +1,8 @@
 package me.blog.youreme.payback.spring;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.spring3.SpringTemplateEngine;
@@ -20,6 +23,7 @@ public class ThymeleafConfig {
         resolver.setCharacterEncoding("UTF-8");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
+        resolver.setCacheable(false);
         resolver.setOrder(1);
 
         return resolver;
@@ -38,6 +42,9 @@ public class ThymeleafConfig {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         resolver.setCharacterEncoding("UTF-8");
+        Map<String, String> variables = new HashMap<String, String>();
+        variables.put("aaa", "bbbb");
+        resolver.setStaticVariables(variables);
 
         return resolver;
     }

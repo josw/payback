@@ -80,7 +80,7 @@ public class UserFactory {
         String[] userInfo = StringUtils.splitPreserveAllTokens(decodedCookie, COOKIE_DELIMETER);
 
         User user = new User();
-        user.setUserId(userInfo[0]);
+        user.setEmail(userInfo[0]);
         user.setPassword(userInfo[1]);
 
         return user;

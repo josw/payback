@@ -20,10 +20,8 @@ import java.util.EnumSet;
  * http://docs.spring.io/spring/docs/3.1.x/javadoc-api/org/springframework/web/WebApplicationInitializer.html
  *
  */
-@Configuration
 public class PaybackWebApplicationInitializer implements WebApplicationInitializer {
 
-    @Override
     public void onStartup(ServletContext container) throws ServletException {
         // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();

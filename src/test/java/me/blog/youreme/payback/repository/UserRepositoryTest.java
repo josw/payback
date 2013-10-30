@@ -21,7 +21,7 @@ public class UserRepositoryTest {
 
     @Test
     public void test() {
-        User user = userRepository.findOne("hunky");
+        User user = userRepository.findByEmail("2");
         System.out.println(user.toString());
     }
 

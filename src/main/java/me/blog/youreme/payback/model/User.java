@@ -1,12 +1,14 @@
 package me.blog.youreme.payback.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  * User: youreme
@@ -15,11 +17,17 @@ import java.util.Date;
  */
 
 @Data
+@EqualsAndHashCode(callSuper=false)
+@JsonIgnoreProperties(value = { "password" })
 @Entity
-@Table(name = "User")
-public class User {
-    @Id
-    private String userId;
+@Table(name = "user")
+public class User extends DTO{
+	private static final long serialVersionUID = 1379968932268564915L;
+
+	@Id @GeneratedValue
+	private long userId;
+    private String email;
     private String password;
-    private Date regdate;
+    private String name;
+    private String phoneNo;
 }
